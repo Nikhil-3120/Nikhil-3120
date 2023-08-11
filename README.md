@@ -1,5 +1,5 @@
 <h1 align="center">Hi 👋, I'm Nikhil K S</h1>
-<h3 align="center">A Skilled and Experienced Software Test Engineer with also a knowledge of Web Development.</h3>
+<h3 align="center">A skilled and experienced Software Test Engineer with knowledge of Web Development.</h3>
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=nikhil-3120&label=Profile%20views&color=0e75b6&style=flat" alt="nikhil-3120" /> </p>
 
