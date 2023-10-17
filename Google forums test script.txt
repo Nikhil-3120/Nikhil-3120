@@ -1,0 +1,409 @@
+package testpackage;
+
+import java.util.List;
+
+import org.apache.commons.mail.DefaultAuthenticator;
+import org.apache.commons.mail.EmailAttachment;
+import org.apache.commons.mail.EmailException;
+import org.apache.commons.mail.MultiPartEmail;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Reporter;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+public class Googleforms {
+WebDriver driver;
+   
+  @BeforeClass
+  public void start (){
+	  System.setProperty("webdriver.chrome.driver","./automation/chromedriver.exe");
+	    driver = new ChromeDriver();
+		driver.manage().window().maximize();
+  }
+     @BeforeMethod
+     public void url() {
+    	 driver.get("https://support.google.com/");
+     }
+  @Test(priority=1)
+   public void chrome() {
+	    driver.findElement(By.xpath("(//h3[.='Google Chrome'])[1]")).click();
+		driver.findElement(By.xpath("(//a[.='Community'])[1]")).click();
+		driver.findElement(By.xpath("//a[.='View all posts']")).click();
+		String date = driver.findElement(By.xpath("(//span[.='Filter']/../../div)[2]/div[1]")).getText();
+		driver.findElement(By.xpath("//button[.='View more']")).click();
+		for(int i=1; i<=4; i++) {
+			WebDriverWait wait4 = new WebDriverWait(driver, 10);
+			wait4.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[.='View more']")));
+			driver.findElement(By.xpath("//button[.='View more']")).click();
+		}
+		Reporter.log("----- Google Chrome discussion links -----");
+		Reporter.log(" The latest discussion was " + date);
+		List<WebElement> links = driver.findElements(By.xpath("//a[@href and @ class = 'thread-list-thread'] ")); 
+		System.out.println("Number of comments till now is " + links.size());
+		for(int i=0; i<links.size(); i++) {
+		Reporter.log(i+1 + " -- " +  links.get(i).getAttribute("href"));
+		}	
+	}
+  @Test(priority=2)
+   public void account() {
+	   driver.findElement(By.xpath("//h3[.='Google Account']")).click();
+	   driver.findElement(By.xpath("(//a[.='Community'])[1]")).click();
+	   driver.findElement(By.xpath("//a[.='View all posts']")).click();
+	   String date = driver.findElement(By.xpath("(//span[.='Filter']/../../div)[2]/div[1]")).getText();
+	   driver.findElement(By.xpath("//button[.='View more']")).click();
+	   for(int i=1; i<4; i++) {
+		   WebDriverWait wait5 = new WebDriverWait(driver,10);
+		   wait5.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[.='View more']")));
+		   driver.findElement(By.xpath("//button[.='View more']")).click();
+	   }
+	    Reporter.log(" The latest discussion was " + date);
+		List<WebElement> links = driver.findElements(By.xpath("//a[@href and @ class = 'thread-list-thread'] ")); 
+		Reporter.log("Number of comments till now is " + links.size());
+		for(int i=0; i<links.size(); i++) {	
+			Reporter.log(i+1 + " -- " +  links.get(i).getAttribute("href"));
+		}   
+   }
+  @Test(priority=3)
+   public void youtube() {
+	   driver.findElement(By.xpath("(//h3[.='YouTube'])[1]")).click();
+	   driver.findElement(By.xpath("(//a[.='Community'])[1]")).click();
+	   driver.findElement(By.xpath("//a[.='View all posts']")).click();
+	   String date = driver.findElement(By.xpath("(//span[.='Filter']/../../div)[2]/div[1]")).getText();
+	   driver.findElement(By.xpath("//button[.='View more']")).click();
+	   for(int i=1; i<4; i++) {
+		   WebDriverWait wait5 = new WebDriverWait(driver,10);
+		   wait5.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[.='View more']")));
+		   driver.findElement(By.xpath("//button[.='View more']")).click();
+	   }
+	    Reporter.log(" The latest discussion was " + date);
+		List<WebElement> links = driver.findElements(By.xpath("//a[@href and @ class = 'thread-list-thread'] ")); 
+		Reporter.log("Number of comments till now is " + links.size());
+		for(int i=0; i<links.size(); i++) {	
+			Reporter.log(i+1 + " -- " +  links.get(i).getAttribute("href"));
+		}
+   }
+  
+   @Test(priority=4)
+   public void gmail() {
+	   driver.findElement(By.xpath("(//h3[.='Gmail'])[1]")).click();
+	   driver.findElement(By.xpath("(//a[.='Community'])[1]")).click();
+	   driver.findElement(By.xpath("//a[.='View all posts']")).click();
+	   String date = driver.findElement(By.xpath("(//span[.='Filter']/../../div)[2]/div[1]")).getText();
+	   driver.findElement(By.xpath("//button[.='View more']")).click();
+	   for(int i=1; i<4; i++) {
+		   WebDriverWait wait5 = new WebDriverWait(driver,10);
+		   wait5.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[.='View more']")));
+		   driver.findElement(By.xpath("//button[.='View more']")).click();
+	   }
+	    Reporter.log(" The latest discussion was " + date);
+		List<WebElement> links = driver.findElements(By.xpath("//a[@href and @ class = 'thread-list-thread'] ")); 
+		Reporter.log("Number of comments till now is " + links.size());
+		for(int i=0; i<links.size(); i++) {	
+			Reporter.log(i+1 + " -- " +  links.get(i).getAttribute("href"));
+		}
+   }
+   
+    @Test(priority=5)
+    public void play() {
+    	driver.findElement(By.xpath("(//h3[.='Google Play'])[1]")).click();
+ 	   driver.findElement(By.xpath("(//a[.='Community'])[1]")).click();
+ 	   driver.findElement(By.xpath("//a[.='View all posts']")).click();
+ 	   String date = driver.findElement(By.xpath("(//span[.='Filter']/../../div)[2]/div[1]")).getText();
+ 	   driver.findElement(By.xpath("//button[.='View more']")).click();
+ 	   for(int i=1; i<4; i++) {
+ 		   WebDriverWait wait5 = new WebDriverWait(driver,10);
+ 		   wait5.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[.='View more']")));
+ 		   driver.findElement(By.xpath("//button[.='View more']")).click();
+ 	   }
+ 	    Reporter.log(" The latest discussion was " + date);
+ 		List<WebElement> links = driver.findElements(By.xpath("//a[@href and @ class = 'thread-list-thread'] ")); 
+ 		Reporter.log("Number of comments till now is " + links.size());
+ 		for(int i=0; i<links.size(); i++) {	
+ 			Reporter.log(i+1 + " -- " +  links.get(i).getAttribute("href"));
+ 		}
+    }
+     @Test(priority=6)
+     public void search() {
+       driver.findElement(By.xpath("(//h3[.='Google Search'])[1]")).click();
+  	   driver.findElement(By.xpath("(//a[.='Community'])[1]")).click();
+  	   driver.findElement(By.xpath("//a[.='View all posts']")).click();
+  	   String date = driver.findElement(By.xpath("(//span[.='Filter']/../../div)[2]/div[1]")).getText();
+  	   driver.findElement(By.xpath("//button[.='View more']")).click();
+  	   for(int i=1; i<4; i++) {
+  		   WebDriverWait wait5 = new WebDriverWait(driver,10);
+  		   wait5.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[.='View more']")));
+  		   driver.findElement(By.xpath("//button[.='View more']")).click();
+  	   }
+  	    Reporter.log(" The latest discussion was " + date);
+  		List<WebElement> links = driver.findElements(By.xpath("//a[@href and @ class = 'thread-list-thread'] ")); 
+  		Reporter.log("Number of comments till now is " + links.size());
+  		for(int i=0; i<links.size(); i++) {	
+  			Reporter.log(i+1 + " -- " +  links.get(i).getAttribute("href"));
+  		}
+     }
+      @Test(priority=7)
+      public void adsense() {
+    	   driver.findElement(By.xpath("(//h3[.='Google AdSense'])[1]")).click();
+     	   driver.findElement(By.xpath("(//a[.='Community'])[1]")).click();
+     	   driver.findElement(By.xpath("//a[.='View all posts']")).click();
+     	   String date = driver.findElement(By.xpath("(//span[.='Filter']/../../div)[2]/div[1]")).getText();
+     	   driver.findElement(By.xpath("//button[.='View more']")).click();
+     	   for(int i=1; i<4; i++) {
+     		   WebDriverWait wait5 = new WebDriverWait(driver,10);
+     		   wait5.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[.='View more']")));
+     		   driver.findElement(By.xpath("//button[.='View more']")).click();
+     	   }
+     	    Reporter.log(" The latest discussion was " + date);
+     		List<WebElement> links = driver.findElements(By.xpath("//a[@href and @ class = 'thread-list-thread'] ")); 
+     		Reporter.log("Number of comments till now is " + links.size());
+     		for(int i=0; i<links.size(); i++) {	
+     			Reporter.log(i+1 + " -- " +  links.get(i).getAttribute("href"));
+     		}
+      }
+      
+      @Test(priority=8)
+      public void phone() {
+    	   driver.findElement(By.xpath("(//h3[.='Pixel Phone'])[1]")).click();
+     	   driver.findElement(By.xpath("(//a[.='Community'])[1]")).click();
+     	   driver.findElement(By.xpath("//a[.='View all posts']")).click();
+     	   String date = driver.findElement(By.xpath("(//span[.='Filter']/../../div)[2]/div[1]")).getText();
+     	   driver.findElement(By.xpath("//button[.='View more']")).click();
+     	   for(int i=1; i<4; i++) {
+     		   WebDriverWait wait5 = new WebDriverWait(driver,10);
+     		   wait5.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[.='View more']")));
+     		   driver.findElement(By.xpath("//button[.='View more']")).click();
+     	   }
+     	    Reporter.log(" The latest discussion was " + date);
+     		List<WebElement> links = driver.findElements(By.xpath("//a[@href and @ class = 'thread-list-thread'] ")); 
+     		Reporter.log("Number of comments till now is " + links.size());
+     		for(int i=0; i<links.size(); i++) {	
+     			Reporter.log(i+1 + " -- " +  links.get(i).getAttribute("href"));
+     		}
+      }
+      @Test(priority=9)
+      public void maps() {
+    	  driver.findElement(By.xpath("(//h3[.='Google Maps'])[1]")).click();
+     	   driver.findElement(By.xpath("(//a[.='Community'])[1]")).click();
+     	   driver.findElement(By.xpath("//a[.='View all posts']")).click();
+     	   String date = driver.findElement(By.xpath("(//span[.='Filter']/../../div)[2]/div[1]")).getText();
+     	   driver.findElement(By.xpath("//button[.='View more']")).click();
+     	   for(int i=1; i<4; i++) {
+     		   WebDriverWait wait5 = new WebDriverWait(driver,10);
+     		   wait5.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[.='View more']")));
+     		   driver.findElement(By.xpath("//button[.='View more']")).click();
+     	   }
+     	    Reporter.log(" The latest discussion was " + date);
+     		List<WebElement> links = driver.findElements(By.xpath("//a[@href and @ class = 'thread-list-thread'] ")); 
+     		Reporter.log("Number of comments till now is " + links.size());
+     		for(int i=0; i<links.size(); i++) {	
+     			Reporter.log(i+1 + " -- " +  links.get(i).getAttribute("href"));
+     		}
+      }
+      
+       @Test(priority=10)
+       public void ads() {
+    	   driver.findElement(By.xpath("(//h3[.='Google Ads'])[1]")).click();
+      	   driver.findElement(By.xpath("(//a[.='Community'])[1]")).click();
+      	   driver.findElement(By.xpath("//a[.='View all posts']")).click();
+      	   String date = driver.findElement(By.xpath("(//span[.='Filter']/../../div)[2]/div[1]")).getText();
+      	   driver.findElement(By.xpath("//button[.='View more']")).click();
+      	   for(int i=1; i<4; i++) {
+      		   WebDriverWait wait5 = new WebDriverWait(driver,10);
+      		   wait5.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[.='View more']")));
+      		   driver.findElement(By.xpath("//button[.='View more']")).click();
+      	   }
+      	    Reporter.log(" The latest discussion was " + date);
+      		List<WebElement> links = driver.findElements(By.xpath("//a[@href and @ class = 'thread-list-thread'] ")); 
+      		Reporter.log("Number of comments till now is " + links.size());
+      		for(int i=0; i<links.size(); i++) {	
+      			Reporter.log(i+1 + " -- " +  links.get(i).getAttribute("href"));
+      		}
+       }
+       @Test(priority=11)
+       public void photos() {
+    	   driver.findElement(By.xpath("(//h3[.='Google Photos'])[1]")).click();
+      	   driver.findElement(By.xpath("(//a[.='Community'])[1]")).click();
+      	   driver.findElement(By.xpath("//a[.='View all posts']")).click();
+      	   String date = driver.findElement(By.xpath("(//span[.='Filter']/../../div)[2]/div[1]")).getText();
+      	   driver.findElement(By.xpath("//button[.='View more']")).click();
+      	   for(int i=1; i<4; i++) {
+      		   WebDriverWait wait5 = new WebDriverWait(driver,10);
+      		   wait5.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[.='View more']")));
+      		   driver.findElement(By.xpath("//button[.='View more']")).click();
+      	   }
+      	    Reporter.log(" The latest discussion was " + date);
+      		List<WebElement> links = driver.findElements(By.xpath("//a[@href and @ class = 'thread-list-thread'] ")); 
+      		Reporter.log("Number of comments till now is " + links.size());
+      		for(int i=0; i<links.size(); i++) {	
+      			Reporter.log(i+1 + " -- " +  links.get(i).getAttribute("href"));
+      		}
+       }
+       @Test(priority=12)
+       public void wireless() {
+    	   driver.findElement(By.xpath("(//h3[.='Google Fi Wireless'])[1]")).click();
+      	   driver.findElement(By.xpath("(//a[.='Community'])[1]")).click();
+      	   driver.findElement(By.xpath("//a[.='View all posts']")).click();
+      	   String date = driver.findElement(By.xpath("(//span[.='Filter']/../../div)[2]/div[1]")).getText();
+      	   driver.findElement(By.xpath("//button[.='View more']")).click();
+      	   for(int i=1; i<4; i++) {
+      		   WebDriverWait wait5 = new WebDriverWait(driver,10);
+      		   wait5.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[.='View more']")));
+      		   driver.findElement(By.xpath("//button[.='View more']")).click();
+      	   }
+      	    Reporter.log(" The latest discussion was " + date);
+      		List<WebElement> links = driver.findElements(By.xpath("//a[@href and @ class = 'thread-list-thread'] ")); 
+      		Reporter.log("Number of comments till now is " + links.size());
+      		for(int i=0; i<links.size(); i++) {	
+      			Reporter.log(i+1 + " -- " +  links.get(i).getAttribute("href"));
+      		}
+       }
+       @Test(priority=13)
+       public void nest() {
+    	   driver.findElement(By.xpath("(//h3[.='Google Nest'])[1]")).click();
+      	   driver.findElement(By.xpath("(//a[.='Community'])[1]")).click();
+      	   driver.findElement(By.xpath("//select[@id='community-activity-sorted-by']")).click();
+      	   driver.findElement(By.xpath("//select[@id='community-activity-sorted-by']/option[1]")).click();
+      	   String date = driver.findElement(By.xpath("//select[@id='community-activity-sorted-by']/option[1]")).getText();
+      	   driver.findElement(By.xpath("//a[.='Load more']")).click();
+      	   for(int i=1; i<3; i++) {
+      		   WebDriverWait wait5 = new WebDriverWait(driver,10);
+      		   wait5.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[.='Load more']")));
+      		   driver.findElement(By.xpath("//a[.='Load more']")).click();
+      	   }
+      	    Reporter.log(" The latest discussion was " + date);
+      		List<WebElement> links = driver.findElements(By.xpath("//article[@class='custom-message-tile custom-thread-unread']/div/h3/a")); 
+      		Reporter.log("Number of comments till now is " + links.size());
+      		for(int i=0; i<links.size(); i++) {	
+      			Reporter.log(i+1 + " -- " +  links.get(i).getAttribute("href"));
+      		}
+       }
+       @Test(priority=14)
+       public void drive() {
+    	   driver.findElement(By.xpath("(//h3[.='Google Drive'])[1]")).click();
+      	   driver.findElement(By.xpath("(//a[.='Community'])[1]")).click();
+      	   driver.findElement(By.xpath("//a[.='View all posts']")).click();
+      	   String date = driver.findElement(By.xpath("(//span[.='Filter']/../../div)[2]/div[1]")).getText();
+      	   driver.findElement(By.xpath("//button[.='View more']")).click();
+      	   for(int i=1; i<3; i++) {
+      		   WebDriverWait wait5 = new WebDriverWait(driver,10);
+      		   wait5.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[.='View more']")));
+      		   driver.findElement(By.xpath("//button[.='View more']")).click();
+      	   }
+      	    Reporter.log(" The latest discussion was " + date);
+      		List<WebElement> links = driver.findElements(By.xpath("//a[@href and @ class = 'thread-list-thread']")); 
+      		Reporter.log("Number of comments till now is " + links.size());
+      		for(int i=0; i<links.size(); i++) {	
+      			Reporter.log(i+1 + " -- " +  links.get(i).getAttribute("href"));	
+      		}
+       }
+       @Test(priority=15)
+        public void cloud() {
+    	    driver.findElement(By.xpath("(//h3[.='Google Cloud'])[1]")).click();
+    	    driver.findElement(By.xpath("(//h3[.='Google Cloud'])[1]")).click();
+    	    try {
+    	    	  boolean disp = driver.findElement(By.xpath("(//a[.='Community'])[1]")).isDisplayed();
+    	    	  if(disp) {
+    	    		  Reporter.log("Community tab is present");
+    	    	  }
+    	    }catch(NoSuchElementException e) {
+    	    	Reporter.log("Google cloud doesn't have the community tab, so we can't view all the discussion and can't extract the link");	
+    	    }
+        }
+       @Test(priority=16)
+        public void families() {
+        	 driver.findElement(By.xpath("(//h3[.='Google For Families'])[1]")).click();
+     	    try {
+     	    	  boolean disp = driver.findElement(By.xpath("(//a[.='Community'])[1]")).isDisplayed();
+     	    	  if(disp) {
+     	    		 Reporter.log("Community tab is present");
+     	    	  }
+     	    }catch(NoSuchElementException e) {
+     	    	Reporter.log("Google for families doesn't have the community tab, so we can't get to view all the discussion and can't extract the link");
+     	    }
+        		
+        }
+        @Test(priority=17)
+        public void pay() {
+        	 driver.findElement(By.xpath("(//h3[.='Google Pay'])[1]")).click();
+     	    try {
+     	    	  boolean disp = driver.findElement(By.xpath("(//a[.='Community'])[1]")).isDisplayed();
+     	    	  if(disp) {
+     	    		  Reporter.log("Community tab is present");
+     	    	  }
+     	    }catch(NoSuchElementException e) {
+     	    	Reporter.log("Google pay doesn't have the community tab, so we can't get to view all the discussion and can't extract the link");
+     	    }
+        	
+        }
+        @Test(priority=18)
+        public void store() {
+        	 driver.findElement(By.xpath("(//h3[.='Google Store'])[1]")).click();
+     	    try {
+     	    	  boolean disp = driver.findElement(By.xpath("(//a[.='Community'])[1]")).isDisplayed();
+     	    	  if(disp) {
+     	    		  Reporter.log("Community tab is present");
+     	    	  }
+     	    }catch(NoSuchElementException e) {
+     	    	Reporter.log("Google Store doesn't have the community tab, so we can't get to view all the discussion and can't extract the link");
+     	    }
+        	
+        }
+        @Test(priority=19)
+         public void shopping() {
+        	 driver.findElement(By.xpath("(//h3[.='Google Shopping'])[1]")).click();
+     	    try {
+     	    	  boolean disp = driver.findElement(By.xpath("(//a[.='Community'])[1]")).isDisplayed();
+     	    	  if(disp) {
+     	    		  Reporter.log("Community tab is present");
+     	    	  }
+     	    }catch(NoSuchElementException e) {
+     	    	Reporter.log("Google shopping doesn't have the community tab, so we can't get to view all the discussion and can't extract the link");
+     	    }
+        	  
+         }
+         @Test(priority=20)
+         public void accessibility() {
+        	 driver.findElement(By.xpath("(//h3[.='Google Accessibility'])[1]")).click();
+     	    try {
+     	    	  boolean disp = driver.findElement(By.xpath("(//a[.='Community'])[1]")).isDisplayed();
+     	    	  if(disp) {
+     	    		  Reporter.log("Community tab is present");
+     	    	  }
+     	    }catch(NoSuchElementException e) {
+     	    	Reporter.log("Google accessibility doesn't have the community tab, so we can't get to view all the discussion and can't extract the link");	
+     	    }
+         }
+  @AfterClass
+   public void close() throws EmailException {
+	   driver.quit();
+	   
+	     System.out.println("Email started");
+	      EmailAttachment attachment = new EmailAttachment();
+		  attachment.setPath("C:\\Users\\Nikhil k.s\\eclipse-workspace\\TestNG\\test-output\\emailable-report.html");
+		  attachment.setDisposition(EmailAttachment.ATTACHMENT);
+		  attachment.setDescription("emailable test report");
+		  attachment.setName("Links of discussions");
+		  System.out.println("attachement send");
+		  MultiPartEmail email1 = new MultiPartEmail();
+		  email1.setHostName("smtp.googlemail.com");
+		  email1.setSmtpPort(465);
+		  email1.setSSLOnConnect(true);
+		  email1.setAuthenticator(new DefaultAuthenticator("nikhilksmlk3@gmail.com","erjq afhv rrpm lfxw"));
+		  email1.addTo("nikhilksctd2000@gmail.com");
+		  email1.setFrom("nikhilksmlk3@gmail.com");
+		  email1.setSubject("The test report");
+		  email1.setMsg("Here is the report that contains links you wanted");
+		  email1.attach(attachment);
+		  email1.send();
+		  System.out.println("Email succesfully sent");
+   }
+
+   }
