@@ -3,7 +3,7 @@
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=nikhil-3120&label=Profile%20views&color=0e75b6&style=flat" alt="nikhil-3120" /> </p>
 
-- 🌱 I’m currently learning **Full stack development and API Testing**
+- 🌱 I’m currently learning **API Testing and Mobile Testing and Performance Testing**
 
 - 🤝 I’m looking for help with **my job search for Software Test Engineer role**
 
