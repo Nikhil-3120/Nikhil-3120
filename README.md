@@ -7,7 +7,7 @@
 
 - 🤝 I’m looking for help with **my job search for Software Test Engineer role**
 
-- 👨‍💻 All of my projects are available at [https://github.com/Nikhil-3120/Nikhil-3120.git](https://github.com/Nikhil-3120.git)
+- 👨‍💻 All of my projects are available at [https://github.com/Nikhil-3120.git](https://github.com/Nikhil-3120.git)
 
 - 📫 How to reach me **nikhilksmlk3@gmail.com**
 
